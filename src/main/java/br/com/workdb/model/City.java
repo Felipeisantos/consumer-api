@@ -18,8 +18,7 @@ public class City {
 	@Column(name = "nome")
 	private String name;
 	
-	
-	@Column(name = "country_id")
+	@Column(name="country_id", nullable=false)
 	private Integer countryId;
 
 	

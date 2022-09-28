@@ -10,7 +10,7 @@ import br.com.workdb.model.City;
 
 public interface CityDAO extends JpaRepository<City, Integer> {
 
-	@Query(value = "SELECT c.id, c.nome FROM city c where c.country_id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM city where country_id = :id " , nativeQuery = true)
     List<City> getCitiesById(@Param("id") Integer id);
 	
 	
