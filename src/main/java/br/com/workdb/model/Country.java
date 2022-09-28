@@ -20,6 +20,9 @@ public class Country {
 	@Column(name = "nome")
 	public String name;
 
+	public Country() {
+		super();
+	}
 	public Country(String name) {
 		super();
 		this.name = name;
@@ -40,6 +43,7 @@ public class Country {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	
 }

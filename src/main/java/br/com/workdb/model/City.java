@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -18,13 +17,52 @@ public class City {
 
 	@Column(name = "nome")
 	private String name;
-
-	@JoinColumn(name = "country")
+	
+	
+	@Column(name = "country_id")
 	private Integer countryId;
 
+	
+
+	public City() {
+		super();
+	}
+
+	public City(Integer id, String name, Integer countryId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.countryId = countryId;
+	}
+	
 	public City(String name, Integer countryId) {
 		super();
 		this.name = name;
+		this.countryId = countryId;
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
