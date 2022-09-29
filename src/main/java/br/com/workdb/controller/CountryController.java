@@ -1,6 +1,5 @@
 package br.com.workdb.controller;
 
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +19,7 @@ public class CountryController {
 	@GetMapping
 	@CrossOrigin(origins = "*")
 	public Iterable<Country> GetCountries() {
-
-		Iterable<Country> countries = new ArrayList<>();
-
-		countries = countryDAO.findAll();
-
-		return countries;
+		return countryDAO.findAll();
 	}
 
 }

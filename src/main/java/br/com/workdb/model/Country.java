@@ -5,10 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "country", schema = "public")
@@ -25,6 +22,7 @@ public class Country {
 	public Country() {
 		super();
 	}
+
 	public Country(String name) {
 		super();
 		this.name = name;
@@ -46,6 +44,4 @@ public class Country {
 		this.name = name;
 	}
 
-
-	
 }

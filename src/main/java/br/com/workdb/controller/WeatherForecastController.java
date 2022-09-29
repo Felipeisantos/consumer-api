@@ -7,26 +7,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.workdb.dao.CityDAO;
-import br.com.workdb.model.City;
+import br.com.workdb.model.WeatherForecast;
+import br.com.workdb.service.WeatherForecastService;
 
 @RestController
-@RequestMapping("/api/city")
-public class CityController {
+@RequestMapping("/api/weatherforecast")
+public class WeatherForecastController {
 
 	@Autowired
-	CityDAO cityDAO;
+	private WeatherForecastService weatherForecastService;
 
 	@GetMapping("/{id}")
 	@CrossOrigin(origins = "*")
-	public Iterable<City> GetCitiesByCountry(@PathVariable Integer id) {
-		return cityDAO.getCitiesByCountryId(id);
-	}
+	public WeatherForecast WeatherForecastConsult(@PathVariable Integer id) {
 
-	@GetMapping
-	@CrossOrigin(origins = "*")
-	public Iterable<City> GetAllCities() {
-		return cityDAO.findAll();
+		return weatherForecastService.WeatherForecastConsult(id);
 	}
-
 }

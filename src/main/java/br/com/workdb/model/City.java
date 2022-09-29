@@ -17,11 +17,9 @@ public class City {
 
 	@Column(name = "nome")
 	private String name;
-	
-	@Column(name="country_id", nullable=false)
-	private Integer countryId;
 
-	
+	@Column(name = "country_id", nullable = false)
+	private Integer countryId;
 
 	public City() {
 		super();
@@ -33,13 +31,12 @@ public class City {
 		this.name = name;
 		this.countryId = countryId;
 	}
-	
+
 	public City(String name, Integer countryId) {
 		super();
 		this.name = name;
 		this.countryId = countryId;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -64,6 +61,5 @@ public class City {
 	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
-	
-	
+
 }

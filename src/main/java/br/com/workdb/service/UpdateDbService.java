@@ -3,7 +3,6 @@ package br.com.workdb.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import br.com.workdb.model.City;
 import br.com.workdb.model.Country;
 
 @Service
-public class GetCountryCityWeb {
+public class UpdateDbService {
 
 	@Autowired
 	private CityDAO cityDAO;
@@ -25,8 +24,8 @@ public class GetCountryCityWeb {
 
 	public void FillDB() {
 		try {
-			// String url =
-			// "https://servicodados.ibge.gov.br/api/v1/localidades/distritos?view=nome";
+			cityDAO.deleteAll();
+			coutryDAO.deleteAll();
 			String url = "https://countriesnow.space/api/v0.1/countries/";
 			RestTemplate restTemplate = new RestTemplate();
 			String resString = restTemplate.getForObject(url, String.class);
@@ -41,7 +40,7 @@ public class GetCountryCityWeb {
 
 				List<City> cities = new ArrayList<>();
 				JSONArray jsonCities = jsonCountry.getJSONArray("cities");
-				
+
 				for (int j = 0; j < jsonCities.length(); j++)
 					cities.add(new City(jsonCities.getString(j), country.getId()));
 				cityDAO.saveAll(cities);
