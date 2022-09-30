@@ -1,8 +1,9 @@
 package br.com.workdb.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WeatherForecast {
+public class WeatherForecast implements Serializable {
 	public Coord coord;
 	public ArrayList<Weather> weather;
 	public String base;

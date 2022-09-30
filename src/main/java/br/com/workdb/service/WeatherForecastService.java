@@ -1,5 +1,8 @@
 package br.com.workdb.service;
 
+import br.com.workdb.dao.ConsultHistoryDAO;
+import br.com.workdb.model.ConsultHistory;
+import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,12 +16,16 @@ import br.com.workdb.model.CityName;
 import br.com.workdb.model.GlobalVars;
 import br.com.workdb.model.WeatherForecast;
 
+import java.util.Date;
+
 @Service
 public class WeatherForecastService {
 
 	@Autowired
 	private CityDAO cityDAO;
 
+	@Autowired
+	private ConsultHistoryDAO consultHistoryDAO;
 	public WeatherForecast WeatherForecastConsult(Integer id) {
 		try {
 			String requestLatLongFromCityName = "http://api.openweathermap.org/geo/1.0/direct?q="
@@ -41,7 +48,12 @@ public class WeatherForecastService {
 			String responseString = restTemplate.getForObject(url, String.class);
 
 			WeatherForecast weater = objectMapper.readValue(responseString, WeatherForecast.class);
+			ConsultHistory consultHistory = new ConsultHistory();
 
+			consultHistory.setDateConsult(new Date());
+			consultHistory.setJson(weater);
+
+			consultHistoryDAO.save(consultHistory);
 			return weater;
 		} catch (JsonMappingException e) {
 			e.printStackTrace();

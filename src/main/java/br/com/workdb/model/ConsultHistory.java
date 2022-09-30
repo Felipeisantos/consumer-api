@@ -1,6 +1,6 @@
 package br.com.workdb.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,15 +28,15 @@ public class ConsultHistory {
     private Date dateConsult;
 
 
-    @Type(type = "com.vladmihalcea.hibernate.type.json.JsonBinaryType")
-    @Column(name = "json")
-    private JsonNode json;
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "json")
+    private WeatherForecast json;
 
     public ConsultHistory() {
         super();
     }
 
-    public ConsultHistory(Integer id, Date dateConsult, JsonNode json) {
+    public ConsultHistory(Integer id, Date dateConsult, WeatherForecast json) {
         super();
         Id = id;
         this.dateConsult = dateConsult;
@@ -60,27 +60,13 @@ public class ConsultHistory {
     }
 
     @Transient
-    public JsonNode getJson() {
+    public WeatherForecast getJson() {
         return json;
     }
 
-    public void setJson(JsonNode json) {
+    public void setJson(WeatherForecast json) {
         this.json = json;
     }
 
-    @Column(name = "json")
-    public String getJsonString() { // This is for JPA
-        return this.json.toString();
-    }
-
-    public void setJsonString(String jsonString) { // This is for JPA
-        // parse from String to JsonNode object
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            this.json = mapper.readTree(jsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
