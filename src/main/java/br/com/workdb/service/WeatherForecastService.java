@@ -1,8 +1,7 @@
 package br.com.workdb.service;
 
 import br.com.workdb.dao.ConsultHistoryDAO;
-import br.com.workdb.model.ConsultHistory;
-import org.apache.catalina.Store;
+import br.com.workdb.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -12,14 +11,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.workdb.dao.CityDAO;
-import br.com.workdb.model.CityName;
-import br.com.workdb.model.GlobalVars;
-import br.com.workdb.model.WeatherForecast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 @Service
 public class WeatherForecastService {
@@ -45,10 +38,10 @@ public class WeatherForecastService {
 
             ObjectMapper objectMapper = new ObjectMapper();
 
-            CityName cityName = objectMapper.readValue(resString, CityName.class);
+            CityJson cityName = objectMapper.readValue(resString, CityJson.class);
 
-            String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + cityName.getLat() + "&lon="
-                    + cityName.getLon() + GlobalVars.BuildAppIdTokenQuery();
+            String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + cityName.coord.getLat() + "&lon="
+                    + cityName.coord.getLon() + GlobalVars.BuildAppIdTokenQuery();
             String responseString = restTemplate.getForObject(url, String.class);
 
             WeatherForecast weater = objectMapper.readValue(responseString, WeatherForecast.class);
@@ -83,7 +76,7 @@ public class WeatherForecastService {
 
             CityName cityName = objectMapper.readValue(resString, CityName.class);
 
-            String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + cityName.getLat() + "&lon="
+            String url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityName.getLat() + "&lon="
                     + cityName.getLon() + GlobalVars.BuildAppIdTokenQuery();
             String responseString = restTemplate.getForObject(url, String.class);
 

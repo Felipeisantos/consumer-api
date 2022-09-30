@@ -1,48 +1,40 @@
 package br.com.workdb.model;
 
-public class Wind {
-	public double speed;
-	public int deg;
-	public double gust;
+public class Wind{
+    public double speed;
+    public int deg;
+    public double gust;
 
-	public Wind() {
-		super();
-	}
+    public Wind() {
+    }
 
-	public Wind(double speed, int deg, double gust) {
-		super();
-		this.speed = speed;
-		this.deg = deg;
-		this.gust = gust;
-	}
+    public Wind(double speed, int deg, double gust) {
+        this.speed = speed;
+        this.deg = deg;
+        this.gust = gust;
+    }
 
-	public double getSpeed() {
-		return speed;
-	}
+    public double getSpeed() {
+        return speed;
+    }
 
-	public void setSpeed(double speed) {
-		this.speed = speed;
-	}
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
-	public int getDeg() {
-		return deg;
-	}
+    public int getDeg() {
+        return deg;
+    }
 
-	public void setDeg(int deg) {
-		this.deg = deg;
-	}
+    public void setDeg(int deg) {
+        this.deg = deg;
+    }
 
-	public double getGust() {
-		return gust;
-	}
+    public double getGust() {
+        return gust;
+    }
 
-	public void setGust(double gust) {
-		this.gust = gust;
-	}
-
-	@Override
-	public String toString() {
-		return "Wind [speed=" + speed + ", deg=" + deg + ", gust=" + gust + "]";
-	}
-
+    public void setGust(double gust) {
+        this.gust = gust;
+    }
 }
