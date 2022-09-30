@@ -1,6 +1,6 @@
 package br.com.workdb.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,12 +12,10 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.springframework.context.annotation.ScopeMetadata;
 
 @Entity
-@Data
 @Table(name = "consult_history")
 public class ConsultHistory {
 
@@ -30,11 +28,59 @@ public class ConsultHistory {
     private Date dateConsult;
 
 
-    @Type(type = "jsonb")
-    @Column(columnDefinition = "json")
-    private WeatherForecast json;
+    @Type(type = "com.vladmihalcea.hibernate.type.json.JsonBinaryType")
+    @Column(name = "json")
+    private JsonNode json;
 
+    public ConsultHistory() {
+        super();
+    }
 
+    public ConsultHistory(Integer id, Date dateConsult, JsonNode json) {
+        super();
+        Id = id;
+        this.dateConsult = dateConsult;
+        this.json = json;
+    }
 
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public Date getDateConsult() {
+        return dateConsult;
+    }
+
+    public void setDateConsult(Date dateConsult) {
+        this.dateConsult = dateConsult;
+    }
+
+    @Transient
+    public JsonNode getJson() {
+        return json;
+    }
+
+    public void setJson(JsonNode json) {
+        this.json = json;
+    }
+
+    @Column(name = "json")
+    public String getJsonString() { // This is for JPA
+        return this.json.toString();
+    }
+
+    public void setJsonString(String jsonString) { // This is for JPA
+        // parse from String to JsonNode object
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            this.json = mapper.readTree(jsonString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
