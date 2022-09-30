@@ -33,6 +33,10 @@
 
 ### Configurando ambiente do projeto 
 
+
+
+
+
 #### 1ª - Crie um banco de dados chamado workdbtest
 
  ```sql
@@ -53,7 +57,12 @@ CREATE DATABASE workdbtest
     
  ```
  
-#### 2º Edite os campos de usuario se senha no arquivo: aplication.properties
+#### 2ª Faça um clone da aplicação
+
+- `git clone https://github.com/Felipeisantos/consumer-api`
+- `cd consumer-api`
+ 
+#### 3º Edite os campos de usuario se senha no arquivo: aplication.properties
  ```spring 
  
 spring.datasource.username=postgres
@@ -61,15 +70,32 @@ spring.datasource.password=admin
 
 ```
 
-#### 3º Não se preocupe com as tabelas, elas serão geradas automaticamente pela aplicação caso queira desabilitar é só alterar para none o parametro do ddl-auto
+#### 4º Não se preocupe com as tabelas, elas serão geradas automaticamente pela aplicação caso queira desabilitar é só alterar para none o parametro do ddl-auto
 
 ```
 spring.jpa.hibernate.ddl-auto = none
 
 ```
 
+<h1 align="center"></h1>
+
+### Usando o maven para executar a aplicação
+
+#### 1º no diretorio da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando
+
+` mvn spring-boot:run `
+
+![Screenshot_5](https://user-images.githubusercontent.com/44867006/193307636-f7e04757-81b9-4385-9c02-97ba9487b131.png)
+
+#### 2ª Quando a api for iniciada, você pode fazer as requisições pelo insomnia postman etc e ainda acessar o swagger da aplicação
+
+
+http://localhost:8080/swagger-ui/index.html
+
+
 
 <h1 align="center"></h1>
+
 <h3>Existem 2 end-points principais usados na api </h3>
 
 <p>Uma requisição POST que é passado como parametro Json o nome da cidade</p>
@@ -86,7 +112,7 @@ spring.jpa.hibernate.ddl-auto = none
 
 <h1 align="center"></h1>
 <br/>
-<p>tambem é possivel acessar todo o historico de consultas através do end-point</p>
+<p>Tambem é possivel acessar todo o historico de consultas através do end-point</p>
 <p>/api/consulthistory</p>
 
 
