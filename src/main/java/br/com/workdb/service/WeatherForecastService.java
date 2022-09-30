@@ -38,10 +38,10 @@ public class WeatherForecastService {
 
             ObjectMapper objectMapper = new ObjectMapper();
 
-            CityJson cityName = objectMapper.readValue(resString, CityJson.class);
+            CityName cityName = objectMapper.readValue(resString, CityName.class);
 
-            String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + cityName.coord.getLat() + "&lon="
-                    + cityName.coord.getLon() + GlobalVars.BuildAppIdTokenQuery();
+            String url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityName.getLat() + "&lon="
+                    + cityName.getLon() + GlobalVars.BuildAppIdTokenQuery();
             String responseString = restTemplate.getForObject(url, String.class);
 
             WeatherForecast weater = objectMapper.readValue(responseString, WeatherForecast.class);

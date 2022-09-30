@@ -1,8 +1,10 @@
 package br.com.workdb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherForecast implements Serializable {
 	public String cod;
 	public int message;

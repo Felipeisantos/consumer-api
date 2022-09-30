@@ -23,7 +23,7 @@ class ConsumerApiApplicationTests {
 
 		try {
 			// Hortolandia City request
-			String url = "https://api.openweathermap.org/data/2.5/weather?lat=-22.858&lon=-47.212&appid=736dcdde77f2ecd180d59261d23a2a57";
+			String url = "https://api.openweathermap.org/data/2.5/forecast?lat=-22.858&lon=-47.212&appid=736dcdde77f2ecd180d59261d23a2a57";
 
 			RestTemplate restTemplate = new RestTemplate();
 			String json = restTemplate.getForObject(url, String.class);
