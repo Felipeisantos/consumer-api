@@ -2,7 +2,7 @@
 
 
 # Objetivo do projeto
-<p>O projeto tem como objetivo consumir a api do site https://openweathermap.org/ nele estão armazenados todos os dados meteorologicos do mundo inteiro, através da latitude e longitude da cidade/pais é possivel acessar os dados meteorologicos da região</p> 
+<p>O projeto tem como objetivo consumir a api do site https://openweathermap.org/ nele estão armazenados todos os dados meteorologicos do mundo inteiro, através da latitude e longitude da cidade/pais é possivel acessar os dados meteorologicos da cidade/pais solicitados</p> 
 
 ## ✔️ Técnicas ferramentas e tecnologias utilizadas 
 
