@@ -12,11 +12,14 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.springframework.context.annotation.ScopeMetadata;
 
 @Entity
 @Table(name = "consult_history")
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class ConsultHistory {
 
     @Id

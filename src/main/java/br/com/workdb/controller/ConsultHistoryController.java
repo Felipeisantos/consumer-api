@@ -19,7 +19,7 @@ public class ConsultHistoryController {
 
     @GetMapping
     @CrossOrigin(origins = "*")
-    public Iterable<ConsultHistory> consultHistoriescAll(){
+    public Iterable<ConsultHistory> consultHistoriescAll() {
         return consultHistoryDAO.findAll();
     }
 
