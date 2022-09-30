@@ -55,6 +55,8 @@ public class WeatherForecastService {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -90,6 +92,8 @@ public class WeatherForecastService {
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return null;
