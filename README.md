@@ -9,6 +9,7 @@
 - ``Java 8``
 - ``InteliJ IDEA``
 - ``Insomnia``
+- ``PostgreSQL``
 - ``Paradigma de orientação a objetos``
 - ``Design Pattern``
 
